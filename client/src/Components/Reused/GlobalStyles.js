@@ -72,8 +72,8 @@ const GlobalStyles = createGlobalStyle`
         --white: #FFFFFF;
     }
     body{
-        background-color: var(--color1);
-    
+        background-color: var(--black);
+        color: var(--white)
     }
     html {
         scroll-behavior: smooth;

@@ -5,6 +5,9 @@ const morgan = require("morgan");
 
 
 //----------HANDLERS IMPORT HERE--------------
+const getTwitchAuthentification = require("./handlers/getTwitchAuthentification")
+const getGames = require("./handlers/getGames")
+const createUser = require("./handlers/createUser")
 
 
 express()
@@ -16,7 +19,9 @@ express()
 
 
 //------------ENDPOINTS HERE---------------
-
+.get("/get-twitch-authentification", getTwitchAuthentification)
+.post("/get-games", getGames)
+.post("/create-user", createUser)
 
 
   // Catches all error response
