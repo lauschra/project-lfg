@@ -9,7 +9,7 @@ const { v4: uuidv4 } = require("uuid");
 const createUser = async (request, response) => {
   const { email, userName, password } = request.body;
 
-  //create new customer document. ignore unwanted keys and create id
+  //create new user document. ignore unwanted keys and create id
   let newUser = {
     email: email,
     password: password,
@@ -27,12 +27,17 @@ const createUser = async (request, response) => {
     });
   }
 
+  //add data to the newUser object
   newUser = {
     ...newUser,
+    lowerCaseUserName: userName.toLowerCase(),
     _id: uuidv4(),
     playingGames: [],
     profile: {},
   };
+
+  //lower case email just in case
+  newUser.email.toLowerCase()
 
   const client = new MongoClient(MONGO_URI);
   try {

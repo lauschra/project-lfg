@@ -8,6 +8,7 @@ const morgan = require("morgan");
 const getTwitchAuthentification = require("./handlers/getTwitchAuthentification")
 const getGames = require("./handlers/getGames")
 const createUser = require("./handlers/createUser")
+const getUserAuthentification = require("./handlers/getTwitchAuthentification")
 
 
 express()
@@ -22,11 +23,13 @@ express()
 .get("/get-twitch-authentification", getTwitchAuthentification)
 .post("/get-games", getGames)
 .post("/create-user", createUser)
+.post("/get-user-authentification", getUserAuthentification)
+
 
 
   // Catches all error response
-  .get("*", (req, res) => {
-    res.status(404).json({
+  .get("*", (request, response) => {
+    response.status(404).json({
       status: 404,
       message: "This is obviously not what you are looking for.",
     });

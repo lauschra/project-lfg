@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-const Signin = () => {
+const Signup = () => {
   const [formData, setFormData] = useState({
     email: "",
     userName: "",
@@ -15,7 +15,7 @@ const Signin = () => {
     setFormData({ ...formData, [key]: value });
   };
 
-  const signinSubmitHandler = (event) => {
+  const signupSubmitHandler = (event) => {
     console.log(formData);
     
     event.preventDefault();
@@ -34,8 +34,8 @@ const Signin = () => {
   // console.log(response);
 
   return (
-    <SigninBox>
-      <form onSubmit={signinSubmitHandler}>
+    <SignupBox>
+      <form onSubmit={signupSubmitHandler}>
         <label htmlFor="email">email</label>
         <input
           type="email"
@@ -63,15 +63,17 @@ const Signin = () => {
         <label htmlFor="passwordConfirm">confirm password</label>
         <input type="password" id="passwordConfirm"></input>
         <br />
-        <button>Sign in</button>
+        <button>Sign-up</button>
       </form>
-    </SigninBox>
+    </SignupBox>
   );
 };
 
-export default Signin;
+export default Signup;
 
-const SigninBox = styled.div`
+const SignupBox = styled.div`
+  display:flex;
+  justify-content:center;
   background-color: var(--gray);
   border: 2px solid var(--yellow);
   border-radius: 20px;

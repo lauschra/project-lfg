@@ -42,7 +42,7 @@ https://api-docs.igdb.com/#getting-started
 
 ## Nagivation tree
 --HomePage
-  |  -Login/Signin compenent
+  |  -Login/Signup compenent
   |--Profile Page
   |   -Avatar component (Name, Icon, prefered plaform, prefered schedule)
   |   -My "playing" games component

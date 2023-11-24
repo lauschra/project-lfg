@@ -59,6 +59,8 @@ const Login = () => {
 export default Login;
 
 const LoginBox = styled.div`
+  display:flex;
+  justify-content:center;
   background-color: var(--gray);
   border: 2px solid var(--yellow);
   border-radius: 20px;
