@@ -38,4 +38,10 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  & > button {
+    background-color: var(--black);
+    color: var(--white);
+    border: 1px solid var(--white);
+    border-radius: 10px;
+  }
 `;

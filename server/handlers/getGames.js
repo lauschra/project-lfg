@@ -1,10 +1,6 @@
 "use strict";
 
-const { MONGO_URI } = process.env;
-
-
-const access_token = "3k8ogudke7caidbosk43feeerpllxv";
-const expires_in = 4703139;
+const access_token = "st106uwv16ntmdvbhuyqbl9wevsouu";
 const token_type = "bearer";
 const client_id = "59f2nv46qhmqvr2n2koc75r7oaer8s";
 

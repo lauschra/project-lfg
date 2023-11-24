@@ -4,6 +4,7 @@ import GlobalStyles from "./Reused/GlobalStyles";
 
 //Page imports
 import LoginPage from "./routes/LoginPage/LoginPage";
+import MyProfilePage from "./routes/MyProfilePage/MyProfilePage";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <GlobalStyles />
       <Routes>
         <Route path="/" element={<LoginPage />} />
+        <Route path="/my-profile" element={<MyProfilePage />} />
       </Routes>
     </BrowserRouter>
   );

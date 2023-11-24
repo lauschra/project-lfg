@@ -1,13 +1,18 @@
 import styled from "styled-components";
-import { useState } from "react";
-
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../Reused/UserContext";
 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const [response, setResponse] = useState({});
+
+  const {user, setUser} = useContext(UserContext)
+
+  const [errorMessage, setErrorMessage] = useState(null)
+  const navigate = useNavigate()
 
   const handleChange = (event) => {
     const key = event.target.name;
@@ -23,18 +28,22 @@ const Login = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ formData }),
+      body: JSON.stringify(formData),
     })
       .then((res) => res.json())
-      .then((data) => setResponse(data));
+      .then((response) => {
+        if (response.status === 201 || response.status === 200) {
+          setUser(response.data);
+          navigate("/my-profile");
+        } else {
+          setErrorMessage(response.message);
+        }
+      });
   };
 
-  // console.log(response);
-
   return (
-    <LoginBox>
-      <form onSubmit={loginSubmitHandler}>
-        <label htmlFor="email">email</label>
+    <LoginForm onSubmit={loginSubmitHandler}>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           id="email"
@@ -42,7 +51,7 @@ const Login = () => {
           onChange={handleChange}
         ></input>
         <br />
-        <label htmlFor="password">password</label>
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
@@ -51,19 +60,26 @@ const Login = () => {
         ></input>
         <br />
         <button>Log in</button>
-      </form>
-    </LoginBox>
+      {errorMessage && <p style={{color: "var(--red)"}}>{errorMessage}</p>}
+    </LoginForm>
   );
 };
 
 export default Login;
 
-const LoginBox = styled.div`
-  display:flex;
-  justify-content:center;
+const LoginForm = styled.form`
+  display: flex;
+  flex-direction:column;
   background-color: var(--gray);
   border: 2px solid var(--yellow);
   border-radius: 20px;
   width: 80vw;
   padding: 5%;
+  & button{
+    background-color:var(--green);
+    border: none;
+    color: var(--white);
+    padding:0.5em;
+    border-radius: 10px;
+  }
 `;

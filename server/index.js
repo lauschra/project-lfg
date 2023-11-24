@@ -8,7 +8,7 @@ const morgan = require("morgan");
 const getTwitchAuthentification = require("./handlers/getTwitchAuthentification")
 const getGames = require("./handlers/getGames")
 const createUser = require("./handlers/createUser")
-const getUserAuthentification = require("./handlers/getTwitchAuthentification")
+const getUserAuthentification = require("./handlers/getUserAuthentification")
 
 
 express()
