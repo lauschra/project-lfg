@@ -60,7 +60,7 @@ const GlobalStyles = createGlobalStyle`
         border-spacing: 0;
     }
     :root {
-        --red: #c72a2f; 
+        --red: #e63136; 
         --black: #050a05; 
         --green: #5d9e75; 
         --yellow: #edcd5f; 
@@ -73,7 +73,7 @@ const GlobalStyles = createGlobalStyle`
     }
     body{
         background-color: var(--black);
-        color: var(--white)
+        color: var(--white);
     }
     html {
         scroll-behavior: smooth;

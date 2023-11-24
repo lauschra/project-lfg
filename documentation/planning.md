@@ -27,7 +27,7 @@
 
 ## Chosen color palette
 <img src="img/color-palette.png" width="850"> </b>
-1. #c72a2f
+1. #e63136
 2. #050a05
 3. #5d9e75
 4. #edcd5f
