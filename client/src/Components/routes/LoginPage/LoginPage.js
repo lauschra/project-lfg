@@ -1,11 +1,19 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { UserContext } from "../../Reused/UserContext";
+import { useNavigate } from "react-router-dom";
 
 import Login from "./Login";
 import Signup from "./Signup";
 
 const LoginPage = () => {
   const [showSignup, setShowSignup] = useState(false);
+  const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    user && navigate("/my-profile");
+  });
 
   return (
     <Container>

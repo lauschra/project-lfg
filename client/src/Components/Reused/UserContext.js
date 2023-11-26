@@ -1,9 +1,13 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 
 export const UserContext = createContext(null);
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const defaultUserState = JSON.parse(localStorage.getItem("user"));
+
+  const [user, setUser] = useState(defaultUserState);
+
+  user ? console.log(`user: ${user.userName}`) : console.log("user: none");
 
   return (
     <UserContext.Provider

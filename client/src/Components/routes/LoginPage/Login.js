@@ -9,10 +9,10 @@ const Login = () => {
     password: "",
   });
 
-  const {user, setUser} = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext);
 
-  const [errorMessage, setErrorMessage] = useState(null)
-  const navigate = useNavigate()
+  const [errorMessage, setErrorMessage] = useState(null);
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const key = event.target.name;
@@ -34,6 +34,7 @@ const Login = () => {
       .then((response) => {
         if (response.status === 201 || response.status === 200) {
           setUser(response.data);
+          localStorage.setItem("user", JSON.stringify(response.data));
           navigate("/my-profile");
         } else {
           setErrorMessage(response.message);
@@ -43,24 +44,24 @@ const Login = () => {
 
   return (
     <LoginForm onSubmit={loginSubmitHandler}>
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          onChange={handleChange}
-        ></input>
-        <br />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          onChange={handleChange}
-        ></input>
-        <br />
-        <button>Log in</button>
-      {errorMessage && <p style={{color: "var(--red)"}}>{errorMessage}</p>}
+      <label htmlFor="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        onChange={handleChange}
+      ></input>
+      <br />
+      <label htmlFor="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        onChange={handleChange}
+      ></input>
+      <br />
+      <button>Log in</button>
+      {errorMessage && <p style={{ color: "var(--red)" }}>{errorMessage}</p>}
     </LoginForm>
   );
 };
@@ -69,17 +70,17 @@ export default Login;
 
 const LoginForm = styled.form`
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   background-color: var(--gray);
   border: 2px solid var(--yellow);
   border-radius: 20px;
   width: 80vw;
   padding: 5%;
-  & button{
-    background-color:var(--green);
+  & button {
+    background-color: var(--green);
     border: none;
     color: var(--white);
-    padding:0.5em;
+    padding: 0.5em;
     border-radius: 10px;
   }
 `;
