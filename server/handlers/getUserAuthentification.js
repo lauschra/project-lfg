@@ -26,11 +26,11 @@ const getUserAuthentification = async (request, response) => {
     const result = await db.collection("users").find({ email: email }).toArray();
 
     //check if account exists
-    if (!result) {
+    if (!result[0]) {
       return response.status(400).json({
         status: 400,
         data: request.body.email,
-        message: "This email is not in use. Sign-up first!",
+        message: "This email doesn't exist. Sign-up first!",
       });
     }
 

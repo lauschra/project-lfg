@@ -14,7 +14,7 @@ const SiteMenu = () => {
       {openedMenu && (
         <ul>
           <a onClick={()=>{navigate("/my-profile"); setOpenedMenu(false)}}>Profile</a>
-          <a>Seach games</a>
+          <a onClick={()=>{navigate("/games-search"); setOpenedMenu(false)}}>Seach games</a>
           <a>Friends</a>
         </ul>
       )}

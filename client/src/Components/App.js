@@ -5,6 +5,7 @@ import GlobalStyles from "./Reused/GlobalStyles";
 //Page imports
 import LoginPage from "./routes/LoginPage/LoginPage";
 import MyProfilePage from "./routes/MyProfilePage/MyProfilePage";
+import GamesSearchPage from "./routes/GamesSearchPage/GamesSearchPage";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/my-profile" element={<MyProfilePage />} />
+        <Route path="/games-search" element={<GamesSearchPage />} />
       </Routes>
     </BrowserRouter>
   );

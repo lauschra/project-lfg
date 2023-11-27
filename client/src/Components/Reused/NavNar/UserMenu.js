@@ -8,7 +8,7 @@ const UserMenu = () => {
   const [openedMenu, setOpenedMenu] = useState(false);
   const navigate = useNavigate();
 
-  //this is not working
+  //this should be moved
   useEffect(() => {
     !user && navigate("/");
   });
@@ -16,7 +16,7 @@ const UserMenu = () => {
   return (
     <MenuDiv>
       <button onClick={() => setOpenedMenu(!openedMenu)}>
-        <span>{user.userName}</span>
+        <span>{user && user.userName}</span>
         <img src="./img/user-icon2.svg" />
       </button>
       {openedMenu && (

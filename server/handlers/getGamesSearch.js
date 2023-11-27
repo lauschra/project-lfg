@@ -2,28 +2,34 @@
 
 const access_token = "st106uwv16ntmdvbhuyqbl9wevsouu";
 const token_type = "bearer";
-const client_id = "59f2nv46qhmqvr2n2koc75r7oaer8s";
+
+require("dotenv").config();
+
+const { CLIENT_ID } = process.env;
 
 const url = "https://api.igdb.com/v4/games"
 
-const fetchBody = `search "Halo"; fields name, cover.url , platforms.name, platforms.platform_family.name; limit 50;`
 
 
-const getGames = async (request, response) => {
+const getGamesSearch = async (request, response) => {
+  const {query} = request.params
+  console.log(typeof query);
+  
+  const fetchBody = `search "${query}"; fields name, cover.url , platforms.name, platforms.platform_family.name; limit 50;`
   try {
     let apiResponse = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
-        "Client-ID": client_id,
+        "Client-ID": CLIENT_ID,
         "Authorization": `${token_type} ${access_token}`
       },
       body: fetchBody
     });
     apiResponse = await apiResponse.json();
 
-    response.status(200).json({ status: 200, data: {apiResponse}, message: "success" });
+    response.status(200).json({ status: 200, data: apiResponse, message: "success" });
   } catch (error) {
     console.log(error);
     response
@@ -32,4 +38,4 @@ const getGames = async (request, response) => {
   }
 };
 
-module.exports = getGames;
+module.exports = getGamesSearch;

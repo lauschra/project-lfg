@@ -54,3 +54,9 @@ Domain Acquisition: Secure funding to acquire "lfg.gg" for $2.5 millions, enhanc
 Market Leadership: Strive for app excellence to become the leading gaming matchmaking platform.
 User Base Growth: Implement targeted strategies to reach 10 million engaged users.
 Retirement: Enjoy retirement post-successful sale, reflecting on the impact in connecting global gamers.
+
+
+
+
+------------
+avatar icons: <a href="https://www.freepik.com/author/freepik/icons/flat-circular-flat_9?t=f&query=gaming">Icon by Freepik</a>

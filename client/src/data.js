@@ -1,0 +1,15 @@
+export const avatarIcons = [
+  {name:"controller1", src:"./img/avatar/game-controller_8882711.png"},
+  {name:"gameboy1", src:"./img/avatar/gameboy_2076332.png"},
+  {name:"gamepad1", src:"./img/avatar/gamepad_8085245.png"},
+  {name:"gearStick1", src:"./img/avatar/gear-stick_4978275.png"},
+  {name:"ghost1", src:"./img/avatar/ghost_566293.png"},
+  {name:"jet1", src:"./img/avatar/jet_952998.png"},
+  {name:"mushroom1", src:"./img/avatar/mushroom_806098.png"},
+  {name:"spaceship1", src:"./img/avatar/spaceship_1704465.png"},
+  {name:"stamp1", src:"./img/avatar/stamp_1049798.png"},
+  {name:"sword1", src:"./img/avatar/sword_1810351.png"},
+  {name:"sword2", src:"./img/avatar/sword_3275815.png"},
+  {name:"tetris1", src:"./img/avatar/tetris_952846.png"},
+  {name:"console1", src:"./img/avatar/video-console_5536809.png"},
+]

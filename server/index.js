@@ -6,7 +6,7 @@ const morgan = require("morgan");
 
 //----------HANDLERS IMPORT HERE--------------
 const getTwitchAuthentification = require("./handlers/getTwitchAuthentification")
-const getGames = require("./handlers/getGames")
+const getGamesSearch = require("./handlers/getGamesSearch")
 const createUser = require("./handlers/createUser")
 const getUserAuthentification = require("./handlers/getUserAuthentification")
 
@@ -21,7 +21,7 @@ express()
 
 //------------ENDPOINTS HERE---------------
 .get("/get-twitch-authentification", getTwitchAuthentification)
-.post("/get-games", getGames)
+.get("/get-games-search/:query", getGamesSearch)
 .post("/create-user", createUser)
 .post("/get-user-authentification", getUserAuthentification)
 
