@@ -3,30 +3,28 @@
 const express = require("express");
 const morgan = require("morgan");
 
-
 //----------HANDLERS IMPORT HERE--------------
-const getTwitchAuthentification = require("./handlers/getTwitchAuthentification")
-const getGamesSearch = require("./handlers/getGamesSearch")
-const createUser = require("./handlers/createUser")
-const getUserAuthentification = require("./handlers/getUserAuthentification")
-const addGame = require("./handlers/addGame")
+const getTwitchAuthentification = require("./handlers/getTwitchAuthentification");
+const getGamesSearch = require("./handlers/getGamesSearch");
+const createUser = require("./handlers/createUser");
+const getUserAuthentification = require("./handlers/getUserAuthentification");
+const addGame = require("./handlers/addGame");
+const removeGame = require("./handlers/removeGame");
 
 express()
-.use(express.json())
-.use(morgan("tiny"))
-//Not exactly sure what this one does. I copied it from a previous project.
-//Original comment said: Any requests for static files will go into the public folder
-.use(express.static("public"))
+  .use(express.json())
+  .use(morgan("tiny"))
+  //Not exactly sure what this one does. I copied it from a previous project.
+  //Original comment said: Any requests for static files will go into the public folder
+  .use(express.static("public"))
 
-
-//------------ENDPOINTS HERE---------------
-.get("/get-twitch-authentification", getTwitchAuthentification)
-.get("/get-games-search/:query", getGamesSearch)
-.post("/create-user", createUser)
-.post("/get-user-authentification", getUserAuthentification)
-.patch("/add-game", addGame)
-
-
+  //------------ENDPOINTS HERE---------------
+  .get("/get-twitch-authentification", getTwitchAuthentification)
+  .get("/get-games-search/:query", getGamesSearch)
+  .post("/create-user", createUser)
+  .post("/get-user-authentification", getUserAuthentification)
+  .patch("/add-game", addGame)
+  .patch("/remove-game", removeGame)
 
   // Catches all error response
   .get("*", (request, response) => {

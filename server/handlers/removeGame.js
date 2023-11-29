@@ -4,7 +4,7 @@ const { MongoClient } = require("mongodb");
 require("dotenv").config();
 const { MONGO_URI } = process.env;
 
-const addGame = async (request, response) => {
+const removeGame = async (request, response) => {
   const { userId, gameId } = request.body;
 
   //validate for correct key naming
@@ -33,22 +33,22 @@ const addGame = async (request, response) => {
       });
     }
 
-    //validate if the game isn't already in the users games array
-    if (userDocument.playingGames.find((game) => game === gameId)) {
+    //validate if the game is in the users games array
+    if (!userDocument.playingGames.find((game) => game === gameId)) {
       return response.status(400).json({
         status: 400,
         data: request.body,
-        message: "Game id already added",
+        message: "Game id already removed",
       });
     }
 
     const result = await db
       .collection("users")
-      .updateOne({ _id: userId }, { $push: { playingGames: gameId } });
+      .updateOne({ _id: userId }, { $pull: { playingGames: gameId } });
     if (result.modifiedCount === 1) {
       response
         .status(201)
-        .json({ status: 201, data: gameId, message: "Game id added" });
+        .json({ status: 201, data: gameId, message: "Game id removed" });
     } else {
       response.status(400).json({
         status: 400,
@@ -68,4 +68,4 @@ const addGame = async (request, response) => {
   }
 };
 
-module.exports = addGame;
+module.exports = removeGame;

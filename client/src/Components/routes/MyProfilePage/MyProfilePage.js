@@ -35,9 +35,11 @@ const MyProfilePage = () => {
         </ProfileInfosDiv>
         <PlayingGamesDiv>
           <h3>Currently playing:</h3>
-          {user.playingGames.map((game)=>{
-            return <p>{game.title}</p>
-          })}
+          <ul>
+      {user.playingGames.map((game) => {
+        return <li key={game}>{game}</li>
+      })}
+      </ul>
         </PlayingGamesDiv>
       </ProfileWrapperDiv>
     </>

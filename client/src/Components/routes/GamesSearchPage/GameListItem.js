@@ -5,12 +5,11 @@ import { UserContext } from "../../Reused/UserContext";
 const GameListItem = ({ game }) => {
   const { user, setUser } = useContext(UserContext);
 
-  //look for game id in user games
-  console.log(user.playingGames);
+  //flag if the game result is present in the user games
   let isAdded = user.playingGames.includes(game.id);
 
   const handleClick = (game) => {
-    //add the game into the db
+    //add the game into the db and context if the game is not already there
     if (!isAdded) {
       fetch(`/add-game`, {
         method: "PATCH",
@@ -25,19 +24,45 @@ const GameListItem = ({ game }) => {
       })
         .then((res) => res.json())
         .then((response) => {
-          console.log(response.message);
-          if(response.status === 200 || response.status === 201)
-          setUser({...user, playingGames: [...user.playingGames, game.id]});
+          if (response.status === 200 || response.status === 201) {
+            setUser({ ...user, playingGames: [...user.playingGames, game.id] });
+          } else {
+            console.log(response.message);
+          }
         });
+
+      //remove the game from the db and context if game is not there
     } else {
-      console.log("game removed test");
+      fetch(`/remove-game`, {
+        method: "PATCH",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: user._id,
+          gameId: game.id,
+        }),
+      })
+        .then((res) => res.json())
+        .then((response) => {
+          if (response.status === 200 || response.status === 201) {
+            const index = user.playingGames.indexOf(game.id);
+            const newArray = user.playingGames;
+            newArray.splice(index, 1);
+            setUser({ ...user, playingGames: newArray });
+          } else {
+            console.log(response.message);
+          }
+        });
     }
   };
 
   //this condition should be changed for a place holder image condition
   if (game.cover) {
     return (
-      <ContainerLi $isAdded = {isAdded}>
+      //the $ is needed for styled component props passing
+      <ContainerLi $isAdded={isAdded}>
         <StyledLink onClick={() => handleClick(game)}>
           <img src={game.cover.url} />
           <span>{game.name}</span>
@@ -50,7 +75,9 @@ const GameListItem = ({ game }) => {
 export default GameListItem;
 
 const ContainerLi = styled.li`
-    background-color: ${props => props.$isAdded ? "var(--lightgray)" : "none"}
+  //this is the synthax to use for props in a styled component
+  background-color: ${(props) =>
+    props.$isAdded ? "var(--lightgray)" : "none"};
 `;
 
 const StyledLink = styled.a`
