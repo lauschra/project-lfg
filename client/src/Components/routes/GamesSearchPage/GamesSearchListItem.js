@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useContext, useState } from "react";
 import { UserContext } from "../../Reused/UserContext";
 
-const GameListItem = ({ game }) => {
+const GamesSearchListItem = ({ game }) => {
   const { user, setUser } = useContext(UserContext);
 
   //flag if the game result is present in the user games
@@ -72,7 +72,7 @@ const GameListItem = ({ game }) => {
   }
 };
 
-export default GameListItem;
+export default GamesSearchListItem;
 
 const ContainerLi = styled.li`
   //this is the synthax to use for props in a styled component

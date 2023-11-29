@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const SiteMenu = () => {
   const [openedMenu, setOpenedMenu] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <MenuDiv>
       <button onClick={() => setOpenedMenu(!openedMenu)}>
@@ -13,9 +13,30 @@ const SiteMenu = () => {
       </button>
       {openedMenu && (
         <ul>
-          <a onClick={()=>{navigate("/my-profile"); setOpenedMenu(false)}}>Profile</a>
-          <a onClick={()=>{navigate("/games-search"); setOpenedMenu(false)}}>Seach games</a>
-          <a>Friends</a>
+          <a
+            onClick={() => {
+              navigate("/my-profile");
+              setOpenedMenu(false);
+            }}
+          >
+            Profile
+          </a>
+          <a
+            onClick={() => {
+              navigate("/games-search");
+              setOpenedMenu(false);
+            }}
+          >
+            Seach games
+          </a>
+          <a
+            onClick={() => {
+              navigate("/friends");
+              setOpenedMenu(false);
+            }}
+          >
+            Friends
+          </a>
         </ul>
       )}
     </MenuDiv>
@@ -36,13 +57,14 @@ const MenuDiv = styled.div`
     background-color: var(--green);
     border-radius: 10px;
   }
-  & button:active{
-    filter: brightness(80%)
+  & button:active {
+    filter: brightness(80%);
   }
   & a {
     padding: 1em;
   }
-  & a:hover, a:active {
-    filter: brightness(80%)
+  & a:hover,
+  a:active {
+    filter: brightness(80%);
   }
 `;

@@ -6,6 +6,7 @@ import GlobalStyles from "./Reused/GlobalStyles";
 import LoginPage from "./routes/LoginPage/LoginPage";
 import MyProfilePage from "./routes/MyProfilePage/MyProfilePage";
 import GamesSearchPage from "./routes/GamesSearchPage/GamesSearchPage";
+import FriendsPage from "./routes/FriendsPage/FriendsPage";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/" element={<LoginPage />} />
         <Route path="/my-profile" element={<MyProfilePage />} />
         <Route path="/games-search" element={<GamesSearchPage />} />
+        <Route path="/friends" element={<FriendsPage />} />
       </Routes>
     </BrowserRouter>
   );

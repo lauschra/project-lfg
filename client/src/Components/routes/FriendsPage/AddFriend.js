@@ -1,15 +1,18 @@
-import Navbar from "../../Reused/NavNar/Navbar";
+import UserListItem from "./UserListItem"
 import styled from "styled-components";
-import { useState } from "react";
-import GamesSearchListItem from "./GamesSearchListItem";
+import { useState, useContext } from "react";
+import { UserContext } from "../../Reused/UserContext";
 
-const GamesSearchPage = () => {
+const AddFriend = () => {
+
   const [searchQuery, setSearchQuery] = useState("");
 
   const [searchResults, setSearchResults] = useState([]);
 
+  const { user, setUser } = useContext(UserContext);
+
   const searchSubmitHandler = () => {
-    fetch(`/get-games-search/${searchQuery}`, {
+    fetch(`/get-users/${searchQuery}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -22,24 +25,21 @@ const GamesSearchPage = () => {
   };
 
   return (
-    <SearchPageWrapperDiv>
-      <Navbar />
-      <p>Games Search</p>
+    <AddTabWrapperDiv>
+      <p>Add Friend</p>
       <input onChange={(event) => setSearchQuery(event.target.value)}></input>
       <button onClick={searchSubmitHandler}>search</button>
       <ul>
-      {searchResults.map((game) => {
-        return <GamesSearchListItem key={game.id} game={game}/>
+      {searchResults.map((user) => {
+        return <UserListItem key={user._id} user={user}/>
       })}
       </ul>
-    </SearchPageWrapperDiv>
+    </AddTabWrapperDiv>
   );
-};
+}
+export default AddFriend
 
-export default GamesSearchPage;
-
-const SearchPageWrapperDiv = styled.div`
-  margin-top: 18%;
+const AddTabWrapperDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

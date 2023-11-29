@@ -1,23 +1,46 @@
 import Navbar from "../../Reused/NavNar/Navbar";
 import styled from "styled-components";
 import { avatarIcons } from "../../../data";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../Reused/UserContext";
 import { useNavigate } from "react-router-dom";
-
+import ProfileGamesListItem from "./ProfileGamesListItem";
 
 const testImage = avatarIcons[3];
 
 const MyProfilePage = () => {
   const { user, storedUser } = useContext(UserContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   //navigate to login page if no user logged in
   useEffect(() => {
     !storedUser && navigate("/");
   });
 
-  if(!user)return <p>Loading...</p>
+  const [apisGameList, setApisGameList] = useState(null);
+
+  useEffect(() => {
+    fetch(`/get-games`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        gamesIds: user.playingGames,
+      }),
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        if (response.status === 200 || response.status === 201) {
+          setApisGameList(response.data);
+        } else {
+          console.log(response.message);
+        }
+      });
+  }, []);
+
+  if (!user) return <p>Loading...</p>;
   return (
     <>
       <Navbar />
@@ -36,10 +59,14 @@ const MyProfilePage = () => {
         <PlayingGamesDiv>
           <h3>Currently playing:</h3>
           <ul>
-      {user.playingGames.map((game) => {
-        return <li key={game}>{game}</li>
-      })}
-      </ul>
+            {apisGameList ? (
+              apisGameList.map((game) => {
+                return <ProfileGamesListItem key={game.id} game={game} />;
+              })
+            ) : (
+              <p>Loading...</p>
+            )}
+          </ul>
         </PlayingGamesDiv>
       </ProfileWrapperDiv>
     </>
@@ -58,19 +85,18 @@ const ProfileWrapperDiv = styled.div`
 const ProfileInfosDiv = styled.div`
   border: 2px solid var(--yellow);
   border-radius: 10px;
-  padding:1em;
-  margin:10%;
+  padding: 1em;
+  margin: 10%;
   background-color: var(--gray);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   & img {
-    width:20%;
+    width: 20%;
   }
   & p {
-    border-bottom: 1px dotted var(--white)
+    border-bottom: 1px dotted var(--white);
   }
 `;
 
-const PlayingGamesDiv = styled.div`
-`
+const PlayingGamesDiv = styled.div``;

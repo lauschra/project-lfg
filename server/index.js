@@ -10,6 +10,7 @@ const createUser = require("./handlers/createUser");
 const getUserAuthentification = require("./handlers/getUserAuthentification");
 const addGame = require("./handlers/addGame");
 const removeGame = require("./handlers/removeGame");
+const getGames = require("./handlers/getGames")
 
 express()
   .use(express.json())
@@ -25,6 +26,7 @@ express()
   .post("/get-user-authentification", getUserAuthentification)
   .patch("/add-game", addGame)
   .patch("/remove-game", removeGame)
+  .post("/get-games", getGames)
 
   // Catches all error response
   .get("*", (request, response) => {

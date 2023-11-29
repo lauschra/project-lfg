@@ -9,7 +9,9 @@ const { v4: uuidv4 } = require("uuid");
 const createUser = async (request, response) => {
   const { email, userName, password } = request.body;
 
-  console.log(request.body);
+  //----------MAKE VALIDATION FOR EXISTING USE NAMES---------
+
+
   //create new user document. ignore unwanted keys and create id
   let newUser = {
     email: email,
