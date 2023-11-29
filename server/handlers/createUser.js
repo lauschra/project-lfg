@@ -68,7 +68,7 @@ const createUser = async (request, response) => {
     console.log(error);
     response
       .status(500)
-      .json({ status: 500, data: {}, message: "unknow error as occured" });
+      .json({ status: 500, data: error.message, message: "unknow error as occured" });
   } finally {
     client.close();
   }

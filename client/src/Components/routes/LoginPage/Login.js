@@ -34,7 +34,7 @@ const Login = () => {
       .then((response) => {
         if (response.status === 201 || response.status === 200) {
           setUser(response.data);
-          localStorage.setItem("user", JSON.stringify(response.data));
+          // localStorage.setItem("user", JSON.stringify(response.data));
           navigate("/my-profile");
         } else {
           setErrorMessage(response.message);

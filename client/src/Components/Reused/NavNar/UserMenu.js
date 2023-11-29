@@ -4,19 +4,14 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 const UserMenu = () => {
+  const navigate = useNavigate()
   const { user, setUser } = useContext(UserContext);
   const [openedMenu, setOpenedMenu] = useState(false);
-  const navigate = useNavigate();
-
-  //this should be moved
-  useEffect(() => {
-    !user && navigate("/");
-  });
 
   return (
     <MenuDiv>
       <button onClick={() => setOpenedMenu(!openedMenu)}>
-        <span>{user && user.userName}</span>
+        <span>{user ? user.userName : "Loading..."}</span>
         <img src="./img/user-icon2.svg" />
       </button>
       {openedMenu && (

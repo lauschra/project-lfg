@@ -1,13 +1,23 @@
 import Navbar from "../../Reused/NavNar/Navbar";
 import styled from "styled-components";
 import { avatarIcons } from "../../../data";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../Reused/UserContext";
+import { useNavigate } from "react-router-dom";
+
 
 const testImage = avatarIcons[3];
 
 const MyProfilePage = () => {
-  const { user } = useContext(UserContext);
+  const { user, storedUser } = useContext(UserContext);
+  const navigate = useNavigate()
+
+  //navigate to login page if no user logged in
+  useEffect(() => {
+    !storedUser && navigate("/");
+  });
+
+  if(!user)return <p>Loading...</p>
   return (
     <>
       <Navbar />

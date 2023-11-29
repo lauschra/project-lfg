@@ -9,7 +9,7 @@ const getTwitchAuthentification = require("./handlers/getTwitchAuthentification"
 const getGamesSearch = require("./handlers/getGamesSearch")
 const createUser = require("./handlers/createUser")
 const getUserAuthentification = require("./handlers/getUserAuthentification")
-
+const addGame = require("./handlers/addGame")
 
 express()
 .use(express.json())
@@ -24,6 +24,7 @@ express()
 .get("/get-games-search/:query", getGamesSearch)
 .post("/create-user", createUser)
 .post("/get-user-authentification", getUserAuthentification)
+.patch("/add-game", addGame)
 
 
 
