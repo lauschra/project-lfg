@@ -60,9 +60,13 @@ const MyProfilePage = () => {
           <h3>Currently playing:</h3>
           <ul>
             {apisGameList ? (
-              apisGameList.map((game) => {
-                return <ProfileGamesListItem key={game.id} game={game} />;
-              })
+              <>
+                {apisGameList.map((game) => {
+                  return <ProfileGamesListItem key={game.id} game={game} />;
+                })}
+              </>
+            ) : user.playingGames.length < 1 ? (
+              <p>Go to the search games menu to add games to your profile</p>
             ) : (
               <p>Loading...</p>
             )}

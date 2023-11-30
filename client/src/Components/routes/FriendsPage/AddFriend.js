@@ -1,4 +1,4 @@
-import UserListItem from "./UserListItem"
+import UserItemSearch from "./UserItemSearch"
 import styled from "styled-components";
 import { useState, useContext } from "react";
 import { UserContext } from "../../Reused/UserContext";
@@ -12,7 +12,7 @@ const AddFriend = () => {
   const { user, setUser } = useContext(UserContext);
 
   const searchSubmitHandler = () => {
-    fetch(`/get-users/${searchQuery}`, {
+    fetch(`/get-users-search/${searchQuery}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -31,7 +31,7 @@ const AddFriend = () => {
       <button onClick={searchSubmitHandler}>search</button>
       <ul>
       {searchResults.map((user) => {
-        return <UserListItem key={user._id} user={user}/>
+        return <UserItemSearch key={user._id} user={user} searchResults={searchResults}/>
       })}
       </ul>
     </AddTabWrapperDiv>
