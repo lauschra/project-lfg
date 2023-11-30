@@ -13,11 +13,19 @@ const getGames = async (request, response) => {
   const { gamesIds } = request.body;
 
   //validate for incorrect or missing information
-  if (!gamesIds || gamesIds.length < 1) {
+  if (!gamesIds || !gamesIds) {
     return response.status(400).json({
       status: 400,
       data: request.params,
       message: "invalide or missing information",
+    });
+  }
+
+  if(gamesIds.length < 1){
+    return response.status(404).json({
+      status: 404,
+      data: request.params,
+      message: "no game IDs in the user array",
     });
   }
 

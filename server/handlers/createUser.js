@@ -37,6 +37,7 @@ const createUser = async (request, response) => {
     _id: uuidv4(),
     playingGames: [],
     profile: {},
+    friends: {list:[], sent:[], received:[]}
   };
 
   //lower case email just in case
@@ -57,6 +58,18 @@ const createUser = async (request, response) => {
         status: 400,
         data: newUser,
         message: "email already in use",
+      });
+    }
+
+    //validate if username is not already in use
+    const existingUserName = await db
+      .collection("users")
+      .findOne({ lowerCaseUserName: newUser.lowerCaseUserName });
+    if (existingUserName) {
+      return response.status(400).json({
+        status: 400,
+        data: newUser,
+        message: "Username already in use",
       });
     }
 

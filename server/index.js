@@ -11,6 +11,8 @@ const getUserAuthentification = require("./handlers/getUserAuthentification");
 const addGame = require("./handlers/addGame");
 const removeGame = require("./handlers/removeGame");
 const getGames = require("./handlers/getGames")
+const getUserSeach = require("./handlers/getUsersSearch")
+const addFriend = require("./handlers/addFriend")
 
 express()
   .use(express.json())
@@ -27,6 +29,8 @@ express()
   .patch("/add-game", addGame)
   .patch("/remove-game", removeGame)
   .post("/get-games", getGames)
+  .get("/get-users-search/:query", getUserSeach)
+  .patch('/add-friend', addFriend)
 
   // Catches all error response
   .get("*", (request, response) => {
