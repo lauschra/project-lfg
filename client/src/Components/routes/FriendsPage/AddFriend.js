@@ -21,6 +21,7 @@ const AddFriend = () => {
       .then((res) => res.json())
       .then((response) => {
         setSearchResults(response.data);
+        //this needs to have an execption added to prevent the user to find himself and users are already in their friends.
       });
   };
 

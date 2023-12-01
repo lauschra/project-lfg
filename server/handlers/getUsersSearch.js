@@ -12,7 +12,7 @@ const getUserSeach = async (request, response) => {
   try {
     const db = client.db("project_lfg");
 
-    //fetch all user names
+    //fetch all user names in mongo
     const userNamesList = await db
       .collection("users")
       .find({})

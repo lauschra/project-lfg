@@ -1,7 +1,7 @@
 "use strict";
 
 const { MongoClient } = require("mongodb");
-const addGame = require("./addGame");
+
 require("dotenv").config();
 const { MONGO_URI } = process.env;
 

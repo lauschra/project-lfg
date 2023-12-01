@@ -3,26 +3,26 @@ import { avatarIcons } from "../../../data";
 
 const testImage = avatarIcons[3];
 
-const UserItemSearch = ({ user }) => {
+const UserItemFriends = ({ user }) => {
   return (
     <StyledLi>
       <img src={testImage.src} />
-      {user && user.userName}
-      <button>send request</button>
+      {user.userName}
+      <button>unfriend</button>
     </StyledLi>
   );
 };
 
-export default UserItemSearch;
+export default UserItemFriends;
 
 const StyledLi = styled.li`
   padding: 5px;
-  gap:5px;
-  font-size:1.25em;
+  gap: 5px;
+  font-size: 1.25em;
   width: 75vw;
   display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   margin-top: 10px;
   border: 1px solid var(--lightgray);
   border-radius: 5px;

@@ -13,6 +13,7 @@ const removeGame = require("./handlers/removeGame");
 const getGames = require("./handlers/getGames")
 const getUserSeach = require("./handlers/getUsersSearch")
 const addFriend = require("./handlers/addFriend")
+const getUsers = require("./handlers/getUsers")
 
 express()
   .use(express.json())
@@ -31,6 +32,7 @@ express()
   .post("/get-games", getGames)
   .get("/get-users-search/:query", getUserSeach)
   .patch('/add-friend', addFriend)
+  .post("/get-users", getUsers)
 
   // Catches all error response
   .get("*", (request, response) => {
