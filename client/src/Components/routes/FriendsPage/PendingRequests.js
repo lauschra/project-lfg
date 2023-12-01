@@ -53,21 +53,21 @@ const PendingRequests = () => {
           console.log(response.message);
         }
       });
-  }, []);
+  }, [] );
 
   return (
     <PendingTabWrapperDiv>
       <p>Pending Requests</p>
       <p>Received</p>
       <ul>
-      {usersInfosReceived && usersInfosReceived.map((user) => {
-        return <UserItemReceived key={user._id} user={user} />
+      {usersInfosReceived && usersInfosReceived.map((userFound) => {
+        return <UserItemReceived key={userFound._id} userFound={userFound} />
       })}
       </ul>
       <p>Sent</p>
       <ul>
-      {usersInfosSent && usersInfosSent.map((user) => {
-        return <UserItemSent key={user._id} user={user} />
+      {usersInfosSent && usersInfosSent.map((userFound) => {
+        return <UserItemSent key={userFound._id} userFound={userFound} />
       })}
       </ul>
     </PendingTabWrapperDiv>

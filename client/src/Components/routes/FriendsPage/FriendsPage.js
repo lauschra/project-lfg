@@ -13,9 +13,9 @@ const FriendsPage = () => {
       <FriendsWrapperDiv>
         <p>Friends page</p>
         <span>
-          <button onClick={()=>setTab("friends")}>friends</button>
-          <button onClick={()=>setTab("add")}>add friend</button>
-          <button onClick={()=>setTab("pending")}>pending request</button>
+          <button onClick={()=>setTab("friends")}>Friends</button>
+          <button onClick={()=>setTab("add")}>Add</button>
+          <button onClick={()=>setTab("pending")}>Pending</button>
         </span>
         {tab === "friends" && <MyFriends />}
         {tab === "add" && <AddFriend />}

@@ -31,8 +31,8 @@ const AddFriend = () => {
       <input onChange={(event) => setSearchQuery(event.target.value)}></input>
       <button onClick={searchSubmitHandler}>search</button>
       <ul>
-      {searchResults.map((user) => {
-        return <UserItemSearch key={user._id} user={user} searchResults={searchResults}/>
+      {searchResults.map((userFound) => {
+        return <UserItemSearch key={userFound._id} userFound={userFound} searchResults={searchResults}/>
       })}
       </ul>
     </AddTabWrapperDiv>

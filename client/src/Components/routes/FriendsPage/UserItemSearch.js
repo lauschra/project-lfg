@@ -1,14 +1,41 @@
 import styled from "styled-components";
 import { avatarIcons } from "../../../data";
+import { UserContext } from "../../Reused/UserContext";
+import { useContext } from "react";
 
 const testImage = avatarIcons[3];
 
-const UserItemSearch = ({ user }) => {
+
+const UserItemSearch = ({ userFound }) => {
+  const {user, setUser} = useContext(UserContext)
+  
+  const addSubmitHandler = () => {
+    fetch(`/add-friend`, {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: user._id,
+        friendId: userFound._id,
+      })
+    })
+    .then((res) => res.json())
+    .then((response) => {
+      if(response.status === 200 || response.status === 201){
+        setUser({ ...user, friends: {...user.friends, sent: [...user.friends.sent, userFound._id]} });
+        } else{
+          console.log(response.message);
+        }
+      });
+  };
+
   return (
     <StyledLi>
       <img src={testImage.src} />
-      {user && user.userName}
-      <button>send request</button>
+      {userFound && userFound.userName}
+      <button onClick={addSubmitHandler}>send request</button>
     </StyledLi>
   );
 };

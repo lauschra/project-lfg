@@ -3,11 +3,11 @@ import { avatarIcons } from "../../../data";
 
 const testImage = avatarIcons[3];
 
-const UserItemSent = ({ user }) => {
+const UserItemSent = ({ userFound }) => {
   return (
     <StyledLi>
       <img src={testImage.src} />
-      {user.userName}
+      {userFound.userName}
       <button>cancel</button>
     </StyledLi>
   );
