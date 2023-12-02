@@ -34,13 +34,3 @@ const FriendsWrapperDiv = styled.div`
   align-items: center;
 `;
 
-const AddFriendDiv = styled.div`
-  border: 2px solid var(--yellow);
-  border-radius: 10px;
-  padding: 1em;
-  margin: 10%;
-  background-color: var(--gray);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;

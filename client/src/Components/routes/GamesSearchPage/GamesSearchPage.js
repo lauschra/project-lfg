@@ -25,8 +25,8 @@ const GamesSearchPage = () => {
     <SearchPageWrapperDiv>
       <Navbar />
       <p>Games Search</p>
-      <input onChange={(event) => setSearchQuery(event.target.value)}></input>
-      <button onClick={searchSubmitHandler}>search</button>
+      <form><input onChange={(event) => setSearchQuery(event.target.value)}></input>
+      <button onClick={searchSubmitHandler} disabled={!searchQuery}>Search</button></form>
       <ul>
       {searchResults.map((game) => {
         return <GamesSearchListItem key={game.id} game={game}/>
@@ -43,4 +43,11 @@ const SearchPageWrapperDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  & > form > button {
+    border:none;
+    background-color: var(--yellow);
+    color:var(--black);
+    padding: 3px 10px;
+    border-radius: 5px;
+  }
 `;

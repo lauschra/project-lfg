@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import { avatarIcons } from "../../../data";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../Reused/UserContext";
 
 const testImage = avatarIcons[3];
 
 const UserItemReceived = ({ userFound }) => {
   const { user, setUser } = useContext(UserContext);
+
+  //work around for user items not disapearing after adding, removing. The logic should be reworked to make the UI update with the user state.
+  const [isVisible, setIsVisible] = useState(true);
 
   const addSubmitHandler = () => {
     fetch(`/add-friend`, {
@@ -35,6 +38,7 @@ const UserItemReceived = ({ userFound }) => {
               list: [...user.friends.list, userFound._id],
             },
           });
+          setIsVisible(false)
         } else {
           console.log(response.message);
         }
@@ -42,7 +46,7 @@ const UserItemReceived = ({ userFound }) => {
   };
 
   return (
-    <StyledLi>
+    isVisible && <StyledLi>
       <img src={testImage.src} />
       {userFound.userName}
       <button onClick={addSubmitHandler}>accept</button>

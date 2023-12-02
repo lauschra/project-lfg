@@ -1,11 +1,15 @@
 import styled from "styled-components";
 import { avatarIcons } from "../../../data";
+import { useState } from "react";
 
 const testImage = avatarIcons[3];
 
 const UserItemSent = ({ userFound }) => {
+  //work around for user items not disapearing after adding, removing. The logic should be reworked to make the UI update with the user state.
+  const [isVisible, setIsVisible] = useState(true);
+
   return (
-    <StyledLi>
+    isVisible && <StyledLi>
       <img src={testImage.src} />
       {userFound.userName}
       <button>cancel</button>

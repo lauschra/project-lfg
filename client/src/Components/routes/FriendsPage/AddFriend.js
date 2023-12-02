@@ -5,7 +5,7 @@ import { UserContext } from "../../Reused/UserContext";
 
 const AddFriend = () => {
 
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(null);
 
   const [searchResults, setSearchResults] = useState([]);
 
@@ -28,8 +28,8 @@ const AddFriend = () => {
   return (
     <AddTabWrapperDiv>
       <p>Add Friend</p>
-      <input onChange={(event) => setSearchQuery(event.target.value)}></input>
-      <button onClick={searchSubmitHandler}>search</button>
+      <form><input onChange={(event) => setSearchQuery(event.target.value)}></input>
+      <button onClick={searchSubmitHandler} disabled={!searchQuery}>search</button></form>
       <ul>
       {searchResults.map((userFound) => {
         return <UserItemSearch key={userFound._id} userFound={userFound} searchResults={searchResults}/>
@@ -44,4 +44,11 @@ const AddTabWrapperDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  & > form > button {
+    border:none;
+    background-color: var(--yellow);
+    color:var(--black);
+    padding: 3px 10px;
+    border-radius: 5px;
+  }
 `;

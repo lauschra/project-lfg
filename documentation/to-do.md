@@ -1,5 +1,6 @@
 MVP
--make add friend fetch
+-fix user comp not going off
+-make app not crash when search nothing
 -make friends profile page
 -make profil settings update endpoint
 -make profile settings page

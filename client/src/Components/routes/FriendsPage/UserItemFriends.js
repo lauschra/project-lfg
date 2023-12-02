@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import { avatarIcons } from "../../../data";
+import { useNavigate } from "react-router-dom";
 
 const testImage = avatarIcons[3];
 
 const UserItemFriends = ({ user }) => {
+  const navigate = useNavigate()
   return (
     <StyledLi>
       <img src={testImage.src} />
       {user.userName}
-      <button>unfriend</button>
+      <button onClick={()=>navigate(`/others-profile/${user._id}`)}>profile</button>
     </StyledLi>
   );
 };
