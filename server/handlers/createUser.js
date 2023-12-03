@@ -36,7 +36,7 @@ const createUser = async (request, response) => {
     lowerCaseUserName: userName.toLowerCase(),
     _id: uuidv4(),
     playingGames: [],
-    profile: {},
+    profile: {platforms:[], tags:[], availabilities:[], avatar:"gearStick1"},
     friends: {list:[], sent:[], received:[]}
   };
 

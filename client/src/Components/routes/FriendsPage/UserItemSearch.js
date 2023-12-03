@@ -50,17 +50,25 @@ const StyledLi = styled.li`
   padding: 5px;
   gap:5px;
   font-size:1.25em;
-  width: 75vw;
+  width: 60vw;
   display: flex;
   align-items: center;
   justify-content:center;
   margin-top: 10px;
   border: 1px solid var(--lightgray);
   border-radius: 5px;
+  background-color: var(--lightgray);
   & span {
     font-size: 1.5em;
   }
   & img {
     width: 50px;
+  }
+  & button {
+    border:none;
+    background-color: var(--yellow);
+    color:var(--black);
+    padding: 3px 10px;
+    border-radius: 5px;
   }
 `;

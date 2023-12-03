@@ -6,7 +6,7 @@ import { UserContext } from "../../Reused/UserContext";
 import { useNavigate, useParams } from "react-router-dom";
 import ProfileGamesListItem from "../MyProfilePage/ProfileGamesListItem";
 
-const testImage = avatarIcons[3];
+
 
 const OthersProfilePage = () => {
   const [targetUser, setTargetUser] = useState(null);
@@ -17,6 +17,7 @@ const OthersProfilePage = () => {
 
   const [gamesAreVisible, setGamesAreVisble] = useState(false);
 
+  
   useEffect(() => {
     fetch(`/get-users`, {
       method: "POST",
@@ -36,7 +37,7 @@ const OthersProfilePage = () => {
           console.log(response.message);
         }
       });
-  }, []);
+    }, []);
 
   const handleShowGames = () => {
     setGamesAreVisble(true);
@@ -60,20 +61,22 @@ const OthersProfilePage = () => {
         });
   };
 
+  
   if (!targetUser) return <p>Loading...</p>;
+  const avatar = avatarIcons.find((icon) => icon.name === targetUser.profile.avatar)
+  console.log(avatar);
   return (
     <>
       <Navbar />
       <ProfileWrapperDiv>
         <ProfileInfosDiv>
-          <img src={testImage.src} />
+          <img src={avatar.src} />
           <h3>{targetUser.userName}</h3>
           <div>
             <p>Member since: nov. 2023</p>
-            <p>Platforms: PC, Playstation 4</p>
-            <p>Availabilities: Week nights, Weekends</p>
-            <p>Real name: Bimmy Bimston</p>
-            <p>Tags: Casual, RPG, MMO, Adventure</p>
+            <p>Platforms: {targetUser.profile.platforms && targetUser.profile.platforms.join(", ")}</p>
+            <p>Availabilities: {targetUser.profile.availabilities && targetUser.profile.availabilities.join(", ")}</p>
+            <p>Tags: {targetUser.profile.tags && targetUser.profile.tags.join(", ")}</p>
           </div>
         <button>Unfriend</button>
         </ProfileInfosDiv>

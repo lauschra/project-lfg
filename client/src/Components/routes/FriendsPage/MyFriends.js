@@ -47,4 +47,10 @@ const FriendTabWrapperDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 2px solid var(--yellow);
+  padding:5px 15px;
+  border-radius:10px;
+  min-width:70vw;
+  min-height:60vh;
+  background-color:var(--gray);
 `;

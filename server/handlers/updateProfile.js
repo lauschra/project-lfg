@@ -14,17 +14,15 @@ const updateProfile = async (request, response) => {
     newPlatforms,
     newTags,
     newAvailabilities,
+    newAvatar
   } = request.body;
 
-  //validate for correct key naming or missing information
+  //validate for correct key naming or missing information. Theres a flaw here because it can't properly validate for keys that should be there but has empty values. This should be reworked in the future.
   if (
     !userId ||
     !newUserName ||
     !newEmail ||
-    !currentPassword ||
-    !newPlatforms ||
-    !newTags ||
-    !newAvailabilities
+    !currentPassword
   ) {
     return response.status(400).json({
       status: 400,
@@ -55,7 +53,7 @@ const updateProfile = async (request, response) => {
       return response.status(404).json({
         status: 404,
         data: request.body,
-        message: "current password don't match",
+        message: "Current password doesn't match",
       });
     }
 
@@ -89,6 +87,7 @@ const updateProfile = async (request, response) => {
     newUserDocument.profile.platforms = newPlatforms;
     newUserDocument.profile.tags = newTags;
     newUserDocument.profile.availabilities = newAvailabilities;
+    newUserDocument.profile.avatar = newAvatar;
 
     const result = await db
       .collection("users")

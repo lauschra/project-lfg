@@ -76,6 +76,7 @@ const GamesSearchListItem = ({ game }) => {
 export default GamesSearchListItem;
 
 const ContainerLi = styled.li`
+  width: 90vw;
   //this is the synthax to use for props in a styled component
   background-color: ${(props) =>
     props.$isAdded ? "var(--lightgray)" : "none"};

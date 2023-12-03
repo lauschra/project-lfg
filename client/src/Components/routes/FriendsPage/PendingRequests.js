@@ -58,13 +58,13 @@ const PendingRequests = () => {
   return (
     <PendingTabWrapperDiv>
       <p>Pending Requests</p>
-      <p>Received</p>
+      <p>Received:</p>
       <ul>
       {usersInfosReceived && usersInfosReceived.map((userFound) => {
         return <UserItemReceived key={userFound._id} userFound={userFound} />
       })}
       </ul>
-      <p>Sent</p>
+      <p>Sent:</p>
       <ul>
       {usersInfosSent && usersInfosSent.map((userFound) => {
         return <UserItemSent key={userFound._id} userFound={userFound} />
@@ -79,4 +79,11 @@ const PendingTabWrapperDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 2px solid var(--red);
+  padding:5px 15px;
+  border-radius:10px;
+  min-width:70vw;
+  min-width:70vw;
+  min-height:60vh;
+  background-color:var(--gray);
 `;

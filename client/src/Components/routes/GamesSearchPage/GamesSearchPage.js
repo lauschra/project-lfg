@@ -23,7 +23,6 @@ const GamesSearchPage = () => {
         console.log(response.data);
       });
   };
-  console.log(searchResults);
 
   return (
     <SearchPageWrapperDiv>

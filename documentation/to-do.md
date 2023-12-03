@@ -1,14 +1,11 @@
 MVP
--fix user comp not going off
--make app not crash when search nothing
--make friends profile page
--make profil settings update endpoint
--make profile settings page
--wire profile details component with user context
+-reword friend profile page
+-finish profile settings
+-fix app crash when no friend found
 -make remove friend endpoint
 -make remove friend fetch
--add execptions to the users searched (users self and friends)
 -make game details component with remove game option
+-add execptions to the users searched (users self and friends)
 
 EXTRA
 -clean up WET functions and components

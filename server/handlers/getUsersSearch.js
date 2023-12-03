@@ -28,7 +28,7 @@ const getUserSeach = async (request, response) => {
     if (filteredUserNameList.length < 1) {
       return response.status(404).json({
         status: 404,
-        data: query,
+        data: null,
         message: "No user with that name found!",
       });
     }

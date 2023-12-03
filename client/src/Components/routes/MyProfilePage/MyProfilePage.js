@@ -6,12 +6,12 @@ import { UserContext } from "../../Reused/UserContext";
 import { useNavigate } from "react-router-dom";
 import ProfileGamesListItem from "./ProfileGamesListItem";
 
-const testImage = avatarIcons[3];
 
 const MyProfilePage = () => {
   const { user, storedUser } = useContext(UserContext);
   const navigate = useNavigate();
-
+  const avatar = avatarIcons.find((icon) => icon.name === user.profile.avatar)
+  
   //navigate to login page if no user logged in
   useEffect(() => {
     !storedUser && navigate("/");
@@ -46,14 +46,13 @@ const MyProfilePage = () => {
       <Navbar />
       <ProfileWrapperDiv>
         <ProfileInfosDiv>
-          <img src={testImage.src} />
+          <img src={avatar.src} />
           <h3>{user.userName}</h3>
           <div>
             <p>Member since: nov. 2023</p>
-            <p>Platforms: PC, Playstation 4</p>
-            <p>Availabilities: Week nights, Weekends</p>
-            <p>Real name: Bimmy Bimston</p>
-            <p>Tags: Casual, RPG, MMO, Adventure</p>
+            <p>Platforms: {user.profile.platforms && user.profile.platforms.join(", ")}</p>
+            <p>Availabilities: {user.profile.availabilities && user.profile.availabilities.join(", ")}</p>
+            <p>Tags: {user.profile.tags && user.profile.tags.join(", ")}</p>
           </div>
         </ProfileInfosDiv>
         <PlayingGamesDiv>
