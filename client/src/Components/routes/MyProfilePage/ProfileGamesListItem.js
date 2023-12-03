@@ -18,6 +18,7 @@ const StyledLi = styled.li`
   align-items: center;
   margin-top: 10px;
   border: 1px solid var(--lightgray);
+  border-radius: 5px;
   & span {
     font-size: 1.5em;
   }

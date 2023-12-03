@@ -4,11 +4,13 @@ import { useState } from "react";
 import GamesSearchListItem from "./GamesSearchListItem";
 
 const GamesSearchPage = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(null);
 
   const [searchResults, setSearchResults] = useState([]);
 
   const searchSubmitHandler = () => {
+    event.preventDefault();
+    console.log(searchQuery);
     fetch(`/get-games-search/${searchQuery}`, {
       headers: {
         Accept: "application/json",
@@ -18,8 +20,10 @@ const GamesSearchPage = () => {
       .then((res) => res.json())
       .then((response) => {
         setSearchResults(response.data);
+        console.log(response.data);
       });
   };
+  console.log(searchResults);
 
   return (
     <SearchPageWrapperDiv>

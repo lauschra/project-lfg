@@ -64,6 +64,7 @@ const GamesSearchListItem = ({ game }) => {
       //the $ is needed for styled component props passing
       <ContainerLi $isAdded={isAdded}>
         <StyledLink onClick={() => handleClick(game)}>
+          {console.log("test")}
           <img src={game.cover.url} />
           <span>{game.name}</span>
         </StyledLink>

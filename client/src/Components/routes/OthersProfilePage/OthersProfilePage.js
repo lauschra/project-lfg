@@ -89,7 +89,7 @@ const OthersProfilePage = () => {
                   })}
                 </>
               ) : targetUser.playingGames.length < 1 ? (
-                <p>Go to the search games menu to add games to your profile</p>
+                <p>This user doesn't have any games yet!</p>
               ) : (
                 <p>Loading...</p>
               )}

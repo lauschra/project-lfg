@@ -8,6 +8,7 @@ import MyProfilePage from "./routes/MyProfilePage/MyProfilePage";
 import GamesSearchPage from "./routes/GamesSearchPage/GamesSearchPage";
 import FriendsPage from "./routes/FriendsPage/FriendsPage";
 import OthersProfilePage from "./routes/OthersProfilePage/OthersProfilePage";
+import ProfileSettings from "./routes/ProfileSettings/ProfileSetting";
 
 const App = () => {
   return (
@@ -19,7 +20,7 @@ const App = () => {
         <Route path="/games-search" element={<GamesSearchPage />} />
         <Route path="/friends" element={<FriendsPage />} />
         <Route path="/others-profile/:targetUserId" element={<OthersProfilePage />} />
-
+        <Route path="/profile-settings" element={<ProfileSettings />} />
       </Routes>
     </BrowserRouter>
   );

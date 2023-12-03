@@ -16,7 +16,7 @@ const UserMenu = () => {
       </button>
       {openedMenu && (
         <ul>
-          <a>Profile Settings</a>
+          <a onClick={()=>navigate("/profile-settings")}>Profile Settings</a>
           <a
             onClick={() => {
               navigate("/");

@@ -12,6 +12,7 @@ const AddFriend = () => {
   const { user, setUser } = useContext(UserContext);
 
   const searchSubmitHandler = () => {
+    event.preventDefault();
     fetch(`/get-users-search/${searchQuery}`, {
       headers: {
         Accept: "application/json",
