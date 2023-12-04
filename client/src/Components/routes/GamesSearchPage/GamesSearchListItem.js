@@ -76,6 +76,7 @@ export default GamesSearchListItem;
 
 const ContainerLi = styled.li`
   width: 90vw;
+  border-radius:5px;
   //this is the synthax to use for props in a styled component
   background-color: ${(props) =>
     props.$isAdded ? "var(--lightgray)" : "none"};
@@ -86,9 +87,12 @@ const StyledLink = styled.a`
   align-items: center;
   margin-top: 10px;
   border: 1px solid var(--lightgray);
+  border-radius:5px;
   & span {
     font-size: 1.5em;
     margin-left:10px;
-
+  }
+  & img {
+    border-radius:5px;
   }
 `;

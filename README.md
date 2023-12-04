@@ -56,6 +56,5 @@ Icon by Freepik
 - add the remove friend/deny request/cancel request feature
 - complete the user settings page to allow the changing of the plaforms, tags and availabilities
 - add execptions to the user search results to prevent users from seeing theirselves and the people they already added
-- make a game details page and display names of  the friends who play this game
 - add encryption for passwords
 - clean up WET functions, components and convoluted JSX returns

@@ -81,6 +81,9 @@ const StyledLi = styled.li`
     right: 5px;
     font-size: 0.9em;
   }
+  & img {
+    border-radius:5px;
+  }
   
 `;
 
