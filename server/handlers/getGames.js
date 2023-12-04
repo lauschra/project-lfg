@@ -32,7 +32,7 @@ const getGames = async (request, response) => {
   //turn the array into a string for the API request
   const stringifiedgamesIds = gamesIds.join();
 
-  const fetchBody = `fields name, cover.url; where id = (${stringifiedgamesIds});`;
+  const fetchBody = `fields name, cover.url, platforms.name, first_release_date; where id = (${stringifiedgamesIds});`;
 
   try {
     let apiResponse = await fetch(url, {
