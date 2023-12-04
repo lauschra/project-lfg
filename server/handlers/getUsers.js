@@ -7,8 +7,6 @@ const { MONGO_URI } = process.env;
 const getUsers = async (request, response) => {
   const { usersIds } = request.body;
 
-  console.log(usersIds);
-
   //validate for missing information
   if (!usersIds) {
     return response.status(400).json({

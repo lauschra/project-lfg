@@ -10,7 +10,6 @@ const GamesSearchPage = () => {
 
   const searchSubmitHandler = () => {
     event.preventDefault();
-    console.log(searchQuery);
     fetch(`/get-games-search/${searchQuery}`, {
       headers: {
         Accept: "application/json",
@@ -20,7 +19,6 @@ const GamesSearchPage = () => {
       .then((res) => res.json())
       .then((response) => {
         setSearchResults(response.data);
-        console.log(response.data);
       });
   };
 

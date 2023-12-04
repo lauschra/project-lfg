@@ -32,7 +32,7 @@ const MyFriends = () => {
 
   return (
     <FriendTabWrapperDiv>
-      <p>My Friends</p>
+      <h3>My Friends</h3>
       <ul>
       {usersInfos && usersInfos.map((user) => {
         return <UserItemFriends key={user._id} user={user} />

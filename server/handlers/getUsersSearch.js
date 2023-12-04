@@ -16,7 +16,7 @@ const getUserSeach = async (request, response) => {
     const userNamesList = await db
       .collection("users")
       .find({})
-      .project({ userName: 1, lowerCaseUserName: 1 })
+      .project({ userName: 1, lowerCaseUserName: 1, "profile.avatar":1, playingGames: 1 })
       .toArray();
 
     //extract only usernames that match the query

@@ -57,7 +57,7 @@ const PendingRequests = () => {
 
   return (
     <PendingTabWrapperDiv>
-      <p>Pending Requests</p>
+      <h3>Pending Requests</h3>
       <p>Received:</p>
       <ul>
       {usersInfosReceived && usersInfosReceived.map((userFound) => {
@@ -86,4 +86,11 @@ const PendingTabWrapperDiv = styled.div`
   min-width:70vw;
   min-height:60vh;
   background-color:var(--gray);
+  & p {
+    margin-bottom:0;
+    margin-top:30px;
+  }
+  & h3{
+    margin-bottom:0;
+  }
 `;

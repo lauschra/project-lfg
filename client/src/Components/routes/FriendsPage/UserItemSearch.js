@@ -3,11 +3,11 @@ import { avatarIcons } from "../../../data";
 import { UserContext } from "../../Reused/UserContext";
 import { useContext, useState } from "react";
 
-const testImage = avatarIcons[3];
 
 
 const UserItemSearch = ({ userFound }) => {
   const {user, setUser} = useContext(UserContext)
+  const avatar = avatarIcons.find((icon) => icon.name === userFound.profile.avatar)
 
   //work around for user items not disapearing after adding, removing. The logic should be reworked to make the UI update with the user state.
   const [isVisible, setIsVisible] = useState(true)
@@ -37,7 +37,7 @@ const UserItemSearch = ({ userFound }) => {
 
   return (
     isVisible && <StyledLi>
-      <img src={testImage.src} />
+      <img src={avatar.src} />
       {userFound && userFound.userName}
       <button onClick={addSubmitHandler}>send request</button>
     </StyledLi>

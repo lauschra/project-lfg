@@ -11,7 +11,6 @@ const FriendsPage = () => {
     <>
       <Navbar />
       <FriendsWrapperDiv>
-        <p>Friends page</p>
         <span>
           <button className="friends" onClick={()=>setTab("friends")}>Friends</button>
           <button className="add" onClick={()=>setTab("add")}>Add</button>
@@ -28,7 +27,7 @@ const FriendsPage = () => {
 export default FriendsPage;
 
 const FriendsWrapperDiv = styled.div`
-  margin-top: 18%;
+  margin-top: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;

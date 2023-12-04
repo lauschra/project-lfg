@@ -79,6 +79,7 @@ const ProfileSettings = () => {
 
   const avatar = avatarIcons.find((icon) => icon.name === user.profile.avatar)
 
+  //this return hurts a lot to see. Needs refactoring.
   return <>
   <Navbar/>
   <SettingsWrapperDiv>
@@ -105,8 +106,10 @@ const ProfileSettings = () => {
               <option value="console1">Console</option>
           </select>}
         <br />
+
+    <LineDiv/>
     <h3 htmlFor="userName">Username:</h3>
-    {!isChanging.userName && <span>{user.userName} <button onClick={() => setIsChanging({...isChanging, userName: true})}>change</button></span>}
+    {!isChanging.userName && <span>{user.userName} <br/> <button onClick={() => setIsChanging({...isChanging, userName: true})}>change</button></span>}
         {isChanging.userName && <input
           type="text"
           id="userName"
@@ -115,9 +118,10 @@ const ProfileSettings = () => {
           onChange={handleChange}
         ></input>}
         <br />
-
+    
+    <LineDiv/>
     <h3 htmlFor="email">Email:</h3>
-    {!isChanging.email && <span>{user.email}<button onClick={() => setIsChanging({...isChanging, email: true})}>change</button></span>}
+    {!isChanging.email && <span>{user.email}<br/><button onClick={() => setIsChanging({...isChanging, email: true})}>change</button></span>}
         {isChanging.email && <input
           type="email"
           id="email"
@@ -127,8 +131,9 @@ const ProfileSettings = () => {
         ></input>}
         <br />
 
+        <LineDiv/>
         <h3 htmlFor="newPassword">Password:</h3>
-        {!isChanging.password && <button onClick={() => setIsChanging({...isChanging, password: true})}>change</button>}
+        {!isChanging.password && <>*****<button onClick={() => setIsChanging({...isChanging, password: true})}>change</button></>}
         {isChanging.password && <input
           type="password"
           id="newPassword"
@@ -136,10 +141,11 @@ const ProfileSettings = () => {
           onChange={handleChange}
         ></input>}
         <br />
-        
+
+        <LineDiv/>
         {/* all these checkbox inputs are not working yet. */}
         <h3>Platforms:</h3>
-        {!isChanging.platforms && <span>{user.profile.platforms && user.profile.platforms.join(", ")}<button onClick={() => setIsChanging({...isChanging, platforms: true})}>change</button></span>}
+        {!isChanging.platforms && <span>{user.profile.platforms && user.profile.platforms.join(", ")}<br/><button onClick={() => setIsChanging({...isChanging, platforms: true})}>change</button></span>}
         {isChanging.platforms && <><span><label htmlFor="xbox">Xbox</label>
         <input
           type="checkbox"
@@ -173,10 +179,10 @@ const ProfileSettings = () => {
           // onChange={handleChange}
         ></input></span></>}
         <br />
-        
 
+        <LineDiv/>
         <h3 htmlFor="tags">Tags:</h3>
-        {!isChanging.tags && <span>{user.profile.tags && user.profile.tags.join(", ")}<button onClick={() => setIsChanging({...isChanging, tags: true})}>change</button></span>}
+        {!isChanging.tags && <span>{user.profile.tags && user.profile.tags.join(", ")}<br/><button onClick={() => setIsChanging({...isChanging, tags: true})}>change</button></span>}
         {isChanging.tags && <><span><label htmlFor="casual">Casual</label>
         <input
           type="checkbox"
@@ -235,8 +241,9 @@ const ProfileSettings = () => {
         ></input></span></>}
         <br />
 
+        <LineDiv/>
         <h3 htmlFor="availabilities">Availabilities:</h3>
-        {!isChanging.availabilities && <span>{user.profile.availabilities && user.profile.availabilities.join(", ")}<button onClick={() => setIsChanging({...isChanging, availabilities: true})}>change</button></span>}
+        {!isChanging.availabilities && <span>{user.profile.availabilities && user.profile.availabilities.join(", ")}<br/><button onClick={() => setIsChanging({...isChanging, availabilities: true})}>change</button></span>}
         {isChanging.availabilities && <><span><label htmlFor="weekends day">Weekends day</label>
         <input
           type="checkbox"
@@ -271,7 +278,8 @@ const ProfileSettings = () => {
         ></input></span></>}
         <br />
 
-        <label htmlFor="currentPassword">Confirm with your current password</label>
+        <LineDiv/>
+        <p htmlFor="currentPassword">Confirm with your current password</p>
         <input
           required
           type="password"
@@ -307,9 +315,9 @@ const InfoFormDiv = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align:center;
   & img {
     width: 20%;
-    margin-bottom: 10px;
   }
   & button {
     border:none;
@@ -317,9 +325,20 @@ const InfoFormDiv = styled.form`
     color:var(--black);
     padding: 3px 10px;
     border-radius: 5px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
+    margin-top:3px;
   }
   & h3 {
     margin-bottom: 10px;
   }
+  & p{
+    margin-top:20px;
+    margin-bottom:5px;
+  }
 `;
+
+//this is a cheap fix. Should find a better way
+const LineDiv = styled.div`
+  width: 70%;
+  border-top: 2px solid var(--lightgray)
+`

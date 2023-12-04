@@ -3,9 +3,11 @@ import { avatarIcons } from "../../../data";
 import { useContext, useState } from "react";
 import { UserContext } from "../../Reused/UserContext";
 
-const testImage = avatarIcons[3];
+
 
 const UserItemReceived = ({ userFound }) => {
+  const avatar = avatarIcons.find((icon) => icon.name === userFound.profile.avatar)
+  
   const { user, setUser } = useContext(UserContext);
 
   //work around for user items not disapearing after adding, removing. The logic should be reworked to make the UI update with the user state.
@@ -47,7 +49,7 @@ const UserItemReceived = ({ userFound }) => {
 
   return (
     isVisible && <StyledLi>
-      <img src={testImage.src} />
+      <img src={avatar.src} />
       {userFound.userName}
       <button onClick={addSubmitHandler}>accept</button>
       <button>deny</button>

@@ -19,8 +19,6 @@ const createUser = async (request, response) => {
     userName: userName,
   };
 
-  console.log(newUser);
-
   //validation for missing information
   if (Object.values(newUser).some((value) => !value)) {
     return response.status(400).json({

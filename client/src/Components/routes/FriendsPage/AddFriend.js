@@ -11,8 +11,6 @@ const AddFriend = () => {
 
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const { user, setUser } = useContext(UserContext);
-
   const searchSubmitHandler = () => {
     event.preventDefault();
     setErrorMessage(null)
@@ -36,7 +34,7 @@ const AddFriend = () => {
 
   return (
     <AddTabWrapperDiv>
-      <p>Add Friend</p>
+      <h3>Add Friend</h3>
       <form><input onChange={(event) => setSearchQuery(event.target.value)}></input>
       <button onClick={searchSubmitHandler} disabled={!searchQuery}>search</button></form>
       <ul>

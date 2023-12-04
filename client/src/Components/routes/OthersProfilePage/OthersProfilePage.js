@@ -1,23 +1,15 @@
 import Navbar from "../../Reused/NavNar/Navbar";
 import styled from "styled-components";
 import { avatarIcons } from "../../../data";
-import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../Reused/UserContext";
-import { useNavigate, useParams } from "react-router-dom";
-import ProfileGamesListItem from "../MyProfilePage/ProfileGamesListItem";
-
-
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import OthersGames from "./OthersGames";
 
 const OthersProfilePage = () => {
   const [targetUser, setTargetUser] = useState(null);
 
-  const [apisGameList, setApisGameList] = useState(null);
-
   const { targetUserId } = useParams();
 
-  const [gamesAreVisible, setGamesAreVisble] = useState(false);
-
-  
   useEffect(() => {
     fetch(`/get-users`, {
       method: "POST",
@@ -39,29 +31,6 @@ const OthersProfilePage = () => {
       });
     }, []);
 
-  const handleShowGames = () => {
-    setGamesAreVisble(true);
-      fetch(`/get-games`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          gamesIds: targetUser.playingGames,
-        }),
-      })
-        .then((res) => res.json())
-        .then((response) => {
-          if (response.status === 200 || response.status === 201) {
-            setApisGameList(response.data);
-          } else {
-            console.log(response.message);
-          }
-        });
-  };
-
-  
   if (!targetUser) return <p>Loading...</p>;
   const avatar = avatarIcons.find((icon) => icon.name === targetUser.profile.avatar)
   console.log(avatar);
@@ -73,31 +42,16 @@ const OthersProfilePage = () => {
           <img src={avatar.src} />
           <h3>{targetUser.userName}</h3>
           <div>
-            <p>Member since: nov. 2023</p>
-            <p>Platforms: {targetUser.profile.platforms && targetUser.profile.platforms.join(", ")}</p>
-            <p>Availabilities: {targetUser.profile.availabilities && targetUser.profile.availabilities.join(", ")}</p>
-            <p>Tags: {targetUser.profile.tags && targetUser.profile.tags.join(", ")}</p>
+            <p><h4>Member since:</h4> nov. 2023</p>
+            <p><h4>Platforms:</h4> {targetUser.profile.platforms && targetUser.profile.platforms.join(", ")}</p>
+            <p><h4>Availabilities:</h4>{targetUser.profile.availabilities && targetUser.profile.availabilities.join(", ")}</p>
+            <p><h4>Tags:</h4> {targetUser.profile.tags && targetUser.profile.tags.join(", ")}</p>
           </div>
         <button>Unfriend</button>
         </ProfileInfosDiv>
         <PlayingGamesDiv>
           <h3>Currently playing:</h3>
-          {!gamesAreVisible && <button onClick={handleShowGames}>Show Games</button>}
-          {gamesAreVisible && (
-            <ul>
-              {apisGameList ? (
-                <>
-                  {apisGameList.map((game) => {
-                    return <ProfileGamesListItem key={game.id} game={game} />;
-                  })}
-                </>
-              ) : targetUser.playingGames.length < 1 ? (
-                <p>This user doesn't have any games yet!</p>
-              ) : (
-                <p>Loading...</p>
-              )}
-            </ul>
-          )}
+          <OthersGames targetUser={targetUser}/>
         </PlayingGamesDiv>
       </ProfileWrapperDiv>
     </>
@@ -122,12 +76,32 @@ const ProfileInfosDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width:70vw;
   & img {
     width: 20%;
   }
   & p {
     border-bottom: 1px dotted var(--white);
   }
+  & button {
+    border:none;
+    background-color: var(--yellow);
+    color:var(--black);
+    padding: 3px 10px;
+    border-radius: 5px;
+  }
+  h4 {
+    margin-bottom: 5px;
+    font-size:1.2em;
+  }
+  h3 {
+    font-size:1.5em;
+  }
 `;
 
-const PlayingGamesDiv = styled.div``;
+const PlayingGamesDiv = styled.div`
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  margin-bottom:1em;
+`;

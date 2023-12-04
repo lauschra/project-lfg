@@ -49,10 +49,10 @@ const MyProfilePage = () => {
           <img src={avatar.src} />
           <h3>{user.userName}</h3>
           <div>
-            <p>Member since: nov. 2023</p>
-            <p>Platforms: {user.profile.platforms && user.profile.platforms.join(", ")}</p>
-            <p>Availabilities: {user.profile.availabilities && user.profile.availabilities.join(", ")}</p>
-            <p>Tags: {user.profile.tags && user.profile.tags.join(", ")}</p>
+            <p><h4>Member since:</h4> nov. 2023</p>
+            <p><h4>Platforms:</h4> {user.profile.platforms && user.profile.platforms.join(", ")}</p>
+            <p><h4>Availabilities:</h4> {user.profile.availabilities && user.profile.availabilities.join(", ")}</p>
+            <p><h4>Tags:</h4> {user.profile.tags && user.profile.tags.join(", ")}</p>
           </div>
         </ProfileInfosDiv>
         <PlayingGamesDiv>
@@ -94,12 +94,25 @@ const ProfileInfosDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width:70vw;
   & img {
     width: 20%;
   }
   & p {
     border-bottom: 1px dotted var(--white);
   }
+  h4 {
+    margin-bottom: 5px;
+    font-size:1.2em;
+  }
+  h3 {
+    font-size:1.5em;
+  }
 `;
 
-const PlayingGamesDiv = styled.div``;
+const PlayingGamesDiv = styled.div`
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  margin-bottom:1em;
+`;

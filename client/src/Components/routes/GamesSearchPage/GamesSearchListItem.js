@@ -64,7 +64,6 @@ const GamesSearchListItem = ({ game }) => {
       //the $ is needed for styled component props passing
       <ContainerLi $isAdded={isAdded}>
         <StyledLink onClick={() => handleClick(game)}>
-          {console.log("test")}
           <img src={game.cover.url} />
           <span>{game.name}</span>
         </StyledLink>
@@ -89,5 +88,7 @@ const StyledLink = styled.a`
   border: 1px solid var(--lightgray);
   & span {
     font-size: 1.5em;
+    margin-left:10px;
+
   }
 `;
