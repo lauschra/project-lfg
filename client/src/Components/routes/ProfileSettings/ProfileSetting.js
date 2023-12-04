@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Navbar from "../../Reused/NavNar/Navbar";
+import Navbar from "../../Reused/Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useContext } from "react";

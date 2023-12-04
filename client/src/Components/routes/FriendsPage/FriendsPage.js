@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Navbar from "../../Reused/NavNar/Navbar";
+import Navbar from "../../Reused/Navbar/Navbar";
 import MyFriends from "./MyFriends";
 import AddFriend from "./AddFriend";
 import PendingRequests from "./PendingRequests";

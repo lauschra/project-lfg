@@ -1,4 +1,4 @@
-import Navbar from "../../Reused/NavNar/Navbar";
+import Navbar from "../../Reused/Navbar/Navbar";
 import styled from "styled-components";
 import { avatarIcons } from "../../../data";
 import { useEffect, useState } from "react";
@@ -33,7 +33,6 @@ const OthersProfilePage = () => {
 
   if (!targetUser) return <p>Loading...</p>;
   const avatar = avatarIcons.find((icon) => icon.name === targetUser.profile.avatar)
-  console.log(avatar);
   return (
     <>
       <Navbar />
@@ -42,10 +41,10 @@ const OthersProfilePage = () => {
           <img src={avatar.src} />
           <h3>{targetUser.userName}</h3>
           <div>
-            <p><h4>Member since:</h4> nov. 2023</p>
-            <p><h4>Platforms:</h4> {targetUser.profile.platforms && targetUser.profile.platforms.join(", ")}</p>
-            <p><h4>Availabilities:</h4>{targetUser.profile.availabilities && targetUser.profile.availabilities.join(", ")}</p>
-            <p><h4>Tags:</h4> {targetUser.profile.tags && targetUser.profile.tags.join(", ")}</p>
+            <h4>Member since:</h4><p>nov. 2023</p>
+            <h4>Platforms:</h4><p>{targetUser.profile.platforms && targetUser.profile.platforms.join(", ")}</p>
+            <h4>Availabilities:</h4><p>{targetUser.profile.availabilities && targetUser.profile.availabilities.join(", ")}</p>
+            <h4>Tags:</h4><p>{targetUser.profile.tags && targetUser.profile.tags.join(", ")}</p>
           </div>
         <button>Unfriend</button>
         </ProfileInfosDiv>
@@ -82,6 +81,7 @@ const ProfileInfosDiv = styled.div`
   }
   & p {
     border-bottom: 1px dotted var(--white);
+    margin: 0px;
   }
   & button {
     border:none;
@@ -89,12 +89,13 @@ const ProfileInfosDiv = styled.div`
     color:var(--black);
     padding: 3px 10px;
     border-radius: 5px;
+    margin-top:1em;
   }
-  h4 {
+  & h4 {
     margin-bottom: 5px;
     font-size:1.2em;
   }
-  h3 {
+  & h3 {
     font-size:1.5em;
   }
 `;

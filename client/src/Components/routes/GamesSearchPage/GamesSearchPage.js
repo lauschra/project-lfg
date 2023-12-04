@@ -1,4 +1,4 @@
-import Navbar from "../../Reused/NavNar/Navbar";
+import Navbar from "../../Reused/Navbar/Navbar";
 import styled from "styled-components";
 import { useState } from "react";
 import GamesSearchListItem from "./GamesSearchListItem";
@@ -25,7 +25,7 @@ const GamesSearchPage = () => {
   return (
     <SearchPageWrapperDiv>
       <Navbar />
-      <p>Games Search</p>
+      <h3>Games Search</h3>
       <form><input onChange={(event) => setSearchQuery(event.target.value)}></input>
       <button onClick={searchSubmitHandler} disabled={!searchQuery}>Search</button></form>
       <ul>
@@ -44,6 +44,7 @@ const SearchPageWrapperDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom:10px;
   & > form > button {
     border:none;
     background-color: var(--yellow);

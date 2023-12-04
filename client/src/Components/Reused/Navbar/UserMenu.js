@@ -12,7 +12,7 @@ const UserMenu = () => {
     <MenuDiv>
       <button onClick={() => setOpenedMenu(!openedMenu)}>
         <span>{user ? user.userName : "Loading..."}</span>
-        <img src="./img/user-icon2.svg" />
+        <img src="/img/user-icon2.svg" />
       </button>
       {openedMenu && (
         <ul>

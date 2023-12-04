@@ -8,7 +8,7 @@ const SiteMenu = () => {
   return (
     <MenuDiv>
       <button onClick={() => setOpenedMenu(!openedMenu)}>
-        <img src="./img/menu-icon.svg" />
+        <img src="/img/menu-icon.svg" />
         <span>Menu</span>
       </button>
       {openedMenu && (

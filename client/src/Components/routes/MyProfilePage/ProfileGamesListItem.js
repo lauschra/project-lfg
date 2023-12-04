@@ -55,12 +55,13 @@ const ProfileGamesListItem = ({ game }) => {
       .then((res) => res.json())
       .then((response) => {
         if (response.status === 200 || response.status === 201) {
+          let num = 0
           response.data.forEach(friend => {
             if(friend.playingGames.includes(game.id)){
-              console.log("matching game found");
-              setFriendsPlayingNum(friendsPlayingNum+1)
+              num++
             }
           });
+          setFriendsPlayingNum(num)
         } else {
           console.log(response.message);
         }

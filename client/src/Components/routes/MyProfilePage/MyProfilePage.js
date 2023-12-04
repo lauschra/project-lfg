@@ -1,4 +1,4 @@
-import Navbar from "../../Reused/NavNar/Navbar";
+import Navbar from "../../Reused/Navbar/Navbar";
 import styled from "styled-components";
 import { avatarIcons } from "../../../data";
 import { useContext, useEffect, useState } from "react";
@@ -49,10 +49,10 @@ const MyProfilePage = () => {
           <img src={avatar.src} />
           <h3>{user.userName}</h3>
           <div>
-            <p><h4>Member since:</h4> nov. 2023</p>
-            <p><h4>Platforms:</h4> {user.profile.platforms && user.profile.platforms.join(", ")}</p>
-            <p><h4>Availabilities:</h4> {user.profile.availabilities && user.profile.availabilities.join(", ")}</p>
-            <p><h4>Tags:</h4> {user.profile.tags && user.profile.tags.join(", ")}</p>
+          <h4>Member since:</h4><p>nov. 2023</p>
+          <h4>Platforms:</h4><p>{user.profile.platforms && user.profile.platforms.join(", ")}</p>
+          <h4>Availabilities:</h4><p>{user.profile.availabilities && user.profile.availabilities.join(", ")}</p>
+          <h4>Tags:</h4><p>{user.profile.tags && user.profile.tags.join(", ")}</p>
           </div>
         </ProfileInfosDiv>
         <PlayingGamesDiv>
@@ -100,12 +100,13 @@ const ProfileInfosDiv = styled.div`
   }
   & p {
     border-bottom: 1px dotted var(--white);
+    margin-top:0px;
   }
-  h4 {
+  & h4 {
     margin-bottom: 5px;
     font-size:1.2em;
   }
-  h3 {
+  & h3 {
     font-size:1.5em;
   }
 `;
