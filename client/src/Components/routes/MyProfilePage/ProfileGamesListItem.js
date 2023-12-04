@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import { UserContext } from "../../Reused/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const ProfileGamesListItem = ({ game }) => {
   const { user, setUser } = useContext(UserContext);
@@ -10,6 +11,7 @@ const ProfileGamesListItem = ({ game }) => {
 
   const [friendsPlayingNum, setFriendsPlayingNum] = useState(0);
 
+  const navigate = useNavigate()
 
   //change the size of the image with the url naming. See the API's doc for more on how this workds
   const imgUrl = game.cover.url.replace("thumb", "cover_small");
@@ -73,7 +75,7 @@ const ProfileGamesListItem = ({ game }) => {
       <StyledLi>
         <>
           <img src={imgUrl} />
-          <span>{game.name}</span>
+          <a onClick={()=>navigate(`/game-details/${game.id}`)}>{game.name}</a>
         </>
         <button onClick={handleClick}>X</button>
         {friendsPlayingNum > 0 && <p>{friendsPlayingNum} friend(s) playing</p>}
@@ -92,7 +94,7 @@ const StyledLi = styled.li`
   border: 1px solid var(--lightgray);
   border-radius: 5px;
   width: 80vw;
-  & span {
+  & a {
     font-size: 1.5em;
     margin-left: 10px;
   }
