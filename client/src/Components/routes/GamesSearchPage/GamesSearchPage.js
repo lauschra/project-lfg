@@ -52,4 +52,7 @@ const SearchPageWrapperDiv = styled.div`
     padding: 3px 10px;
     border-radius: 5px;
   }
+  & h3{
+    font-size:1.5em;
+  }
 `;

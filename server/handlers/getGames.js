@@ -1,6 +1,6 @@
 "use strict";
 
-const access_token = "st106uwv16ntmdvbhuyqbl9wevsouu";
+const access_token = "gr9k46d9cvznckllnfn0ij8ngjq3ki";
 const token_type = "bearer";
 
 require("dotenv").config();
